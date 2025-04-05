@@ -24,4 +24,11 @@
 /home/luke/programming/projects/tetris/obj/Debug/net8.0/tetris.genruntimeconfig.cache
 /home/luke/programming/projects/tetris/obj/Debug/net8.0/ref/tetris.dll
 /home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/EmptyBlock.xnb
+/home/luke/programming/projects/tetris/obj/Debug/net8.0/tetris.sourcelink.json
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/DarkBlueBlock.xnb
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/GreenBlock.xnb
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/LightBlueBlock.xnb
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/OrangeBlock.xnb
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/PurpleBlock.xnb
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/RedBlock.xnb
 /home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/YellowBlock.xnb
