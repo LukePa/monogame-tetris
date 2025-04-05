@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/home/luke/programming/projects/tetris/Content/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0653745
+"/home/luke/programming/projects/tetris/Content/YellowBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/YellowBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0652702
