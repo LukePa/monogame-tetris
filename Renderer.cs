@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System;
+using System.Collections.Generic;
 
 namespace tetris;
 
@@ -47,23 +48,30 @@ public class Renderer
             for (int y = 0; y < board.boardHeight; y++)
             {
                 var blockY = (boardDimensions.Bottom - blockDimensions) - (blockDimensions * y);
-                DrawGameboardSquare(blockX, blockY, blockDimensions, board.GetSquareAt(x, y));
+                
+                var textureToRender = BlockColourToTexture(board.GetSquareAt(x, y).GetBlock()?.BlockColour);
+                foreach (var point in board.GetPointsCoveredByActiveTetromino())
+                {
+                    if (point.X == x && point.Y == y)
+                    {
+                        textureToRender = BlockColourToTexture(board.GetActiveTetrominoColour());
+                    }
+                }
+                
+                DrawGameboardSquare(blockX, blockY, blockDimensions, textureToRender);
             }
         }
     }
 
-    void DrawGameboardSquare(int x, int y, int dimensions, GameBoardSquare square)
+    void DrawGameboardSquare(int x, int y, int dimensions, Texture2D texture)
     {
         var placementSquare = new Rectangle(x, y, dimensions, dimensions);
-        Texture2D textureToRender = BlockToTexture(square.GetBlock());
-        _spriteBatch.Draw(textureToRender, placementSquare, Color.White);
+        _spriteBatch.Draw(texture, placementSquare, Color.White);
     }
 
-    private Texture2D BlockToTexture(Block block)
+    private Texture2D BlockColourToTexture(BlockColour? blockColour)
     {
-        if (block == null) return textures.EmptyBlockTexture;
-        
-        return block.BlockColour switch
+        return blockColour switch
         {
             BlockColour.DarkBlue => textures.DarkBlueBlockTexture,
             BlockColour.Green => textures.GreenBlockTexture,
