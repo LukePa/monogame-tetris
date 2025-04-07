@@ -55,27 +55,24 @@ public class Renderer
     void DrawGameboardSquare(int x, int y, int dimensions, GameBoardSquare square)
     {
         var placementSquare = new Rectangle(x, y, dimensions, dimensions);
-        Texture2D textureToRender;
-        if (square.IsEmpty())
-        {
-            textureToRender = textures.emptyBlockTexture;
-        }
-        else
-        {
-            textureToRender = BlockColourToTexture(square.GetBlock().BlockColour);
-        }
+        Texture2D textureToRender = BlockToTexture(square.GetBlock());
         _spriteBatch.Draw(textureToRender, placementSquare, Color.White);
     }
 
-    Texture2D BlockColourToTexture(BlockColour blockColour)
+    private Texture2D BlockToTexture(Block block)
     {
-        if (blockColour == BlockColour.Yellow)
+        if (block == null) return textures.EmptyBlockTexture;
+        
+        return block.BlockColour switch
         {
-            return textures.yellowBlockTexture;
-        }
-        else
-        {
-            return textures.emptyBlockTexture;
-        }
+            BlockColour.DarkBlue => textures.DarkBlueBlockTexture,
+            BlockColour.Green => textures.GreenBlockTexture,
+            BlockColour.LightBlue => textures.LightBlueBlockTexture,
+            BlockColour.Orange => textures.OrangeBlockTexture,
+            BlockColour.Purple => textures.PurpleBlockTexture,
+            BlockColour.Red => textures.RedBlockTexture,
+            BlockColour.Yellow => textures.YellowBlockTexture,
+            _ => textures.EmptyBlockTexture
+        };
     }
 }

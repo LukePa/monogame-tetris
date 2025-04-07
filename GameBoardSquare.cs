@@ -4,7 +4,7 @@ namespace tetris;
 
 public class GameBoardSquare
 {
-    Block? contents;
+    private Block contents;
 
     public GameBoardSquare()
     {
