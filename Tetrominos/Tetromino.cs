@@ -15,4 +15,21 @@ public abstract class Tetromino
     {
         return Colour;
     }
+
+    public bool[,] GetGridFromRotation(ActiveTetrominoRotation rotation)
+    {
+        switch (rotation)
+        {
+            case ActiveTetrominoRotation.Zero:
+                return Rotation0;
+            case ActiveTetrominoRotation.Ninety:
+                return Rotation90;
+            case ActiveTetrominoRotation.OneEighty:
+                return Rotation180;
+            case ActiveTetrominoRotation.TwoSeventy:
+                return Rotation270;
+            default:
+                return Rotation0;
+        }
+    }
 }

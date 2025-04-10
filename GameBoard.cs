@@ -51,7 +51,7 @@ public class GameBoard
         var points = new List<Point>();
         if (activeTetromino != null && activeTetrominoLocation != null)
         {
-            points = activeTetromino.GetCoveredSquaresFromPoint((Point)activeTetrominoLocation);
+            points = activeTetromino.GetRelativeCurrentlyCoveredSquares((Point)activeTetrominoLocation);
         } 
         return points;
     }
@@ -60,5 +60,28 @@ public class GameBoard
     {
         if (activeTetromino?.Tetromino != null) return activeTetromino.Tetromino.GetColour();
         return null;
+    }
+
+    public void TryRotateActiveTetromino()
+    {
+        if (activeTetromino == null || activeTetrominoLocation == null) return;
+        
+        List<Point> squaresCoveredByNextRotation = activeTetromino.GetRelativeCoveredSquaresOfNextRotation((Point)activeTetrominoLocation);
+        if (CheckAllAreEmptyValidSpaces(squaresCoveredByNextRotation))
+        {
+            activeTetromino.IncrementRotation();
+        }
+    }
+
+    private bool CheckAllAreEmptyValidSpaces(List<Point> points)
+    {
+        foreach (var point in points)
+        {
+            if (point.X < 0 || point.X >= boardWidth || point.Y < 0 || point.Y >= boardHeight) return false;
+            var square = GetSquareAt(point.X, point.Y);
+            if (!square.IsEmpty()) return false;
+        }
+
+        return true;
     }
 }
