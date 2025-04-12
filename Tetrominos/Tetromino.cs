@@ -1,13 +1,14 @@
 using System;
+using Microsoft.Xna.Framework;
 
 namespace tetris.Tetrominos;
 
 public abstract class Tetromino
 {
-    public bool[,] Rotation0;
-    public bool[,] Rotation90;
-    public bool[,] Rotation180;
-    public bool[,] Rotation270;
+    public Point[] Rotation0;
+    public Point[] Rotation90;
+    public Point[] Rotation180;
+    public Point[] Rotation270;
 
     protected BlockColour Colour;
 
@@ -16,7 +17,7 @@ public abstract class Tetromino
         return Colour;
     }
 
-    public bool[,] GetGridFromRotation(ActiveTetrominoRotation rotation)
+    public Point[] GetPointsFromRotation(ActiveTetrominoRotation rotation)
     {
         switch (rotation)
         {
@@ -31,5 +32,31 @@ public abstract class Tetromino
             default:
                 return Rotation0;
         }
+    }
+
+    public int GetWidthOfRotation(ActiveTetrominoRotation rotation)
+    {
+        var points = GetPointsFromRotation(rotation);
+        int? minX = null;
+        int? maxX = null;
+        foreach (var point in points)
+        {
+            if (minX == null || point.X < minX)
+            {
+                minX = point.X;
+            }
+
+            if (maxX == null || point.X > maxX)
+            {
+                maxX = point.X;
+            }
+        }
+
+        if (!maxX.HasValue || !minX.HasValue || maxX.Value < minX.Value)
+        {
+            throw new Exception("Could not get width of rotation");
+        }
+
+        return maxX.Value - minX.Value;
     }
 }

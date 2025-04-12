@@ -16,11 +16,6 @@ public class ActiveTetromino
         _location = startLocation;
     }
 
-    private bool[,] CurrentRotationGrid()
-    {
-        return Tetromino.GetGridFromRotation(_rotation);
-    }
-
     public void IncrementRotation()
     {
         switch (_rotation)
@@ -103,21 +98,14 @@ public class ActiveTetromino
     }
     
     
-    private List<Point> GetCoveredSquaresFromPointAndRotation(Point point, ActiveTetrominoRotation rotation)
+    private List<Point> GetCoveredSquaresFromPointAndRotation(Point postion, ActiveTetrominoRotation rotation)
     {
         var points = new List<Point>();
-        
-        for (int x = 0; x < Tetromino.GetGridFromRotation(rotation).GetLength(0); x += 1)
+        foreach (var point in Tetromino.GetPointsFromRotation(rotation))
         {
-            for (int y = 0; y < Tetromino.GetGridFromRotation(rotation).GetLength(1); y += 1)
-            {
-                if (Tetromino.GetGridFromRotation(rotation)[x, y] == true)
-                {
-                    points.Add(new Point(point.X + x, point.Y - y));
-                }
-            }
+            points.Add(new Point(point.X + postion.X, postion.Y - point.Y));
         }
-        
+
         return points;
     }
 }

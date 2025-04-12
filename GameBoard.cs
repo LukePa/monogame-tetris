@@ -13,6 +13,7 @@ public class GameBoard
     public int boardHeight = 20;
     
     private ActiveTetromino activeTetromino;
+    private ActiveTetrominoFactory activeTetrominoFactory;
 
     public GameBoard()
     {
@@ -25,20 +26,9 @@ public class GameBoard
                 boardSquares[x, y] = new GameBoardSquare();
             }
         }
-        
-        
-        // FOR TESTING RENDERING
-        var block = new Block(BlockColour.Yellow);
-        GetSquareAt(0, 0).SetBlock(block);
-        GetSquareAt(1, 0).SetBlock(block);
-        GetSquareAt(2, 0).SetBlock(block);
-        GetSquareAt(1, 1).SetBlock(block);
-        
 
-        GetSquareAt(7, 4).SetBlock(block);
-
-        var linePiece = new LineTetromino();
-        activeTetromino = new ActiveTetromino(linePiece, new Point(3, 6));
+        activeTetrominoFactory = new ActiveTetrominoFactory(boardWidth, boardHeight);
+        GetNewActiveTetromino();
     }
 
     public GameBoardSquare GetSquareAt(int x, int y)
@@ -103,12 +93,30 @@ public class GameBoard
         else
         {
             PlaceActiveTetromino();
+            GetNewActiveTetromino();
         }
     }
 
     private void PlaceActiveTetromino()
     {
-        return;
+        var coveredPoints = GetPointsCoveredByActiveTetromino();
+
+        if (!CheckAllAreEmptyValidSpaces(coveredPoints))
+        {
+
+            throw new Exception("Should end the game here");
+        }
+        
+        foreach (var coveredPoint in coveredPoints)
+        {
+            var square = GetSquareAt(coveredPoint.X, coveredPoint.Y);
+            square.SetBlock(new Block(activeTetromino.Tetromino.GetColour()));
+        }
+    }
+
+    private void GetNewActiveTetromino()
+    {
+        activeTetromino = activeTetrominoFactory.GetNewActiveTetromino();
     }
 
     private bool CheckAllAreEmptyValidSpaces(List<Point> points)
