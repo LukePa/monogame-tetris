@@ -22,7 +22,13 @@ public class LineTetromino : Tetromino
             {false, true, false, false},
             {false, true, false, false},
         };
-        Rotation180 = Rotation0;
+        Rotation180 = new bool[4,4]
+        {
+            {false, false, false, false},
+            {false, false, false, false},
+            {true, true, true, true},
+            {false, false, false, false},
+        };
         Rotation270 = Rotation90;
     }
 }

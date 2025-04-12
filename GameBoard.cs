@@ -13,7 +13,6 @@ public class GameBoard
     public int boardHeight = 20;
     
     private ActiveTetromino activeTetromino;
-    private Point? activeTetrominoLocation;
 
     public GameBoard()
     {
@@ -34,11 +33,12 @@ public class GameBoard
         GetSquareAt(1, 0).SetBlock(block);
         GetSquareAt(2, 0).SetBlock(block);
         GetSquareAt(1, 1).SetBlock(block);
+        
+
+        GetSquareAt(7, 4).SetBlock(block);
 
         var linePiece = new LineTetromino();
-        activeTetromino = new ActiveTetromino(linePiece);
-        
-        activeTetrominoLocation = new Point(3, 6);
+        activeTetromino = new ActiveTetromino(linePiece, new Point(3, 6));
     }
 
     public GameBoardSquare GetSquareAt(int x, int y)
@@ -49,28 +49,66 @@ public class GameBoard
     public List<Point> GetPointsCoveredByActiveTetromino()
     {
         var points = new List<Point>();
-        if (activeTetromino != null && activeTetrominoLocation != null)
+        if (activeTetromino != null)
         {
-            points = activeTetromino.GetRelativeCurrentlyCoveredSquares((Point)activeTetrominoLocation);
+            points = activeTetromino.GetRelativeCurrentlyCoveredSquares();
         } 
         return points;
     }
 
     public BlockColour? GetActiveTetrominoColour()
     {
-        if (activeTetromino?.Tetromino != null) return activeTetromino.Tetromino.GetColour();
-        return null;
+        return activeTetromino.Tetromino.GetColour();
     }
 
     public void TryRotateActiveTetromino()
     {
-        if (activeTetromino == null || activeTetrominoLocation == null) return;
+        if (activeTetromino == null) return;
         
-        List<Point> squaresCoveredByNextRotation = activeTetromino.GetRelativeCoveredSquaresOfNextRotation((Point)activeTetrominoLocation);
-        if (CheckAllAreEmptyValidSpaces(squaresCoveredByNextRotation))
+        List<Point> nextCoveredSquares = activeTetromino.GetRelativeCoveredSquaresOfNextRotation();
+        if (CheckAllAreEmptyValidSpaces(nextCoveredSquares))
         {
             activeTetromino.IncrementRotation();
         }
+    }
+
+    public void TryMoveActiveTetrominoLeft()
+    {
+        if (activeTetromino == null) return;
+        List<Point> nextCoveredSquares = activeTetromino.GetRelativeCoveredSquaresOfNextLeft();
+        if (CheckAllAreEmptyValidSpaces(nextCoveredSquares))
+        {
+            activeTetromino.MoveLeft();
+        }
+    }
+    
+    public void TryMoveActiveTetrominoRight()
+    {
+        if (activeTetromino == null) return;
+        List<Point> nextCoveredSquares = activeTetromino.GetRelativeCoveredSquaresOfNextRight();
+        if (CheckAllAreEmptyValidSpaces(nextCoveredSquares))
+        {
+            activeTetromino.MoveRight();
+        }
+    }
+
+    public void TryMoveActiveTetrominoDown()
+    {
+        if (activeTetromino == null) return;
+        List<Point> nextCoveredSquares = activeTetromino.GetRelativeCoveredSquaresOfNextDown();
+        if (CheckAllAreEmptyValidSpaces(nextCoveredSquares))
+        {
+            activeTetromino.MoveDown();
+        }
+        else
+        {
+            PlaceActiveTetromino();
+        }
+    }
+
+    private void PlaceActiveTetromino()
+    {
+        return;
     }
 
     private bool CheckAllAreEmptyValidSpaces(List<Point> points)

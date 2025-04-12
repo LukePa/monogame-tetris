@@ -32,5 +32,15 @@ public class GameManager
         {
             _gameBoard.TryRotateActiveTetromino();
         }
+
+        if (KeyUpController.HasKeyReleased(Keys.A))
+        {
+            _gameBoard.TryMoveActiveTetrominoLeft();
+        }
+        
+        if (KeyUpController.HasKeyReleased(Keys.D))
+        {
+            _gameBoard.TryMoveActiveTetrominoRight();
+        }
     }
 }

@@ -8,13 +8,15 @@ public class ActiveTetromino
 {
     public Tetromino Tetromino;
     private ActiveTetrominoRotation _rotation = ActiveTetrominoRotation.Zero;
+    private Point _location;
 
-    public ActiveTetromino(Tetromino tetromino)
+    public ActiveTetromino(Tetromino tetromino, Point startLocation)
     {
         Tetromino = tetromino;
+        _location = startLocation;
     }
 
-    private bool[,] CurrentRotation()
+    private bool[,] CurrentRotationGrid()
     {
         return Tetromino.GetGridFromRotation(_rotation);
     }
@@ -41,7 +43,22 @@ public class ActiveTetromino
         }
     }
 
-    private ActiveTetrominoRotation NextRotation()
+    public void MoveLeft()
+    {
+        _location.X--;
+    }
+
+    public void MoveRight()
+    {
+        _location.X++;
+    }
+
+    public void MoveDown()
+    {
+        _location.Y--;
+    }
+
+    private ActiveTetrominoRotation GetNextRotation()
     {
         switch (_rotation)
         {
@@ -60,15 +77,31 @@ public class ActiveTetromino
     
     
 
-    public List<Point> GetRelativeCurrentlyCoveredSquares(Point point)
+    public List<Point> GetRelativeCurrentlyCoveredSquares()
     {
-        return GetCoveredSquaresFromPointAndRotation(point, _rotation);
+        return GetCoveredSquaresFromPointAndRotation(_location, _rotation);
     }
 
-    public List<Point> GetRelativeCoveredSquaresOfNextRotation(Point point)
+    public List<Point> GetRelativeCoveredSquaresOfNextRotation()
     {
-        return GetCoveredSquaresFromPointAndRotation(point, NextRotation());
+        return GetCoveredSquaresFromPointAndRotation(_location, GetNextRotation());
     }
+
+    public List<Point> GetRelativeCoveredSquaresOfNextLeft()
+    {
+        return GetCoveredSquaresFromPointAndRotation(new Point(_location.X - 1, _location.Y), _rotation);
+    }
+    
+    public List<Point> GetRelativeCoveredSquaresOfNextRight()
+    {
+        return GetCoveredSquaresFromPointAndRotation(new Point(_location.X + 1, _location.Y), _rotation);
+    }
+
+    public List<Point> GetRelativeCoveredSquaresOfNextDown()
+    {
+        return GetCoveredSquaresFromPointAndRotation(new Point(_location.X, _location.Y - 1), _rotation);
+    }
+    
     
     private List<Point> GetCoveredSquaresFromPointAndRotation(Point point, ActiveTetrominoRotation rotation)
     {
