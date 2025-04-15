@@ -26,4 +26,14 @@ public class ActiveTetrominoFactory
     {
         return _tetrominoQueue.NextTetromino();
     }
+
+    public Tetromino PopFromQueue()
+    {
+        return _tetrominoQueue.Pop();
+    }
+
+    public Tetromino[] GetNextTetrominos(int amount)
+    {
+        return _tetrominoQueue.GetNextXTetrominoes(amount).ToArray();
+    }
 }

@@ -115,11 +115,17 @@ public class GameBoard
         List<Point> newCoveredSpaces = _activeTetromino.GetRelativeCoveredSquaresOfDifferentTetromino(nextTetromino);
         if (CheckAllAreEmptyValidSpaces(newCoveredSpaces))
         {
+            if (HeldTetromino == null) _activeTetrominoFactory.PopFromQueue();
             HeldTetromino = _activeTetromino.Tetromino;
             _activeTetromino.SetNewTetromino(nextTetromino);
         }
     }
 
+    public Tetromino[] GetNextTetrominos()
+    {
+        return _activeTetrominoFactory.GetNextTetrominos(5);
+    }
+    
     private void PlaceActiveTetromino()
     {
         var coveredPoints = GetPointsCoveredByActiveTetromino();

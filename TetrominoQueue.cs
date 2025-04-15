@@ -68,4 +68,9 @@ public class TetrominoQueue
 
         return _list[0];
     }
+
+    public List<Tetromino> GetNextXTetrominoes(int amount)
+    {
+        return _list.Slice(0, amount);
+    }
 }

@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
+using tetris.Tetrominos;
 
 namespace tetris;
 
@@ -33,6 +34,7 @@ public class Renderer
 
         _spriteBatch.Begin();
         DrawGameboard(gameManager.gameBoard);
+        DrawHeldTetromino(gameManager.gameBoard);
         _spriteBatch.End();
     }
 
@@ -63,6 +65,19 @@ public class Renderer
         }
     }
 
+    void DrawHeldTetromino(GameBoard board)
+    {
+        var heldTetrominoDisplayRectangle = new Rectangle(350, 50, 80, 80);
+        var innerTetrominoRectangle = new Rectangle(360, 60, 60, 60);
+        
+        _spriteBatch.Draw(textures.EmptyBlockTexture, heldTetrominoDisplayRectangle, Color.White);
+
+        if (board.HeldTetromino != null)
+        {
+            DrawTetrominoIcon(board.HeldTetromino, innerTetrominoRectangle);
+        }
+    }
+
     void DrawGameboardSquare(int x, int y, int dimensions, Texture2D texture)
     {
         var placementSquare = new Rectangle(x, y, dimensions, dimensions);
@@ -82,5 +97,33 @@ public class Renderer
             BlockColour.Yellow => textures.YellowBlockTexture,
             _ => textures.EmptyBlockTexture
         };
+    }
+
+    void DrawTetrominoIcon(Tetromino tetromino, Rectangle placementSquare)
+    {
+        var blockWidthPixel = placementSquare.Width / 4;
+        var blockHeightPixel = placementSquare.Height / 4;
+
+        var tetrominoWidth = tetromino.GetWidthOfRotation(ActiveTetrominoRotation.Zero);
+        var tetrominoHeight = tetromino.GetHeightOfRotation(ActiveTetrominoRotation.Zero);
+
+        var iconWidth = blockWidthPixel * tetrominoWidth;
+        var iconHeight = blockHeightPixel * tetrominoHeight;
+        
+        var iconStartX = (placementSquare.X + (placementSquare.Width - iconWidth) / 2);
+        var iconStartY = (placementSquare.Y + (placementSquare.Height - iconHeight) / 2);
+
+        var points = tetromino.GetPointsFromRotation(ActiveTetrominoRotation.Zero);
+        Texture2D blockTexture = BlockColourToTexture(tetromino.GetColour());
+
+        var xOffset = tetromino.GetLowestXPoint(ActiveTetrominoRotation.Zero);
+        var yOffset = tetromino.GetLowestYPoint(ActiveTetrominoRotation.Zero);
+        
+        foreach (var point in points)
+        {
+            var blockX = iconStartX + ((point.X - xOffset) * blockWidthPixel);
+            var blockY = iconStartY + ((point.Y - yOffset) * blockHeightPixel);
+            _spriteBatch.Draw(blockTexture, new Rectangle(blockX, blockY, blockWidthPixel, blockHeightPixel), Color.White);
+        }
     }
 }
