@@ -41,11 +41,11 @@ public class Renderer
         var boardDimensions = new Rectangle(600, 50, 400, 800);
         var blockDimensions = 40;
 
-        for (int x = 0; x < board.boardWidth; x++)
+        for (int x = 0; x < board.BoardWidth; x++)
         {
             var blockX = boardDimensions.Left + (blockDimensions * x);
             
-            for (int y = 0; y < board.boardHeight; y++)
+            for (int y = 0; y < board.BoardHeight; y++)
             {
                 var blockY = (boardDimensions.Bottom - blockDimensions) - (blockDimensions * y);
                 
