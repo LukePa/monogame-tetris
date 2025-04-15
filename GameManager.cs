@@ -26,6 +26,7 @@ public class GameManager
     public void Update(GameTime gameTime)
     {
         HandleExit();
+        HandleHeldTetrominoInput();
         _movementController.Update(gameTime);
         _blockDropController.Update(gameTime);
     }
@@ -37,7 +38,14 @@ public class GameManager
             _game.Exit();
         }
     }
-    
+
+    void HandleHeldTetrominoInput()
+    {
+        if (KeyUpController.HasKeyReleased(Keys.C))
+        {
+            _gameBoard.TrySwapActiveTetromino();
+        }
+    }
 
     
     

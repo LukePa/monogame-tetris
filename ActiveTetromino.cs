@@ -96,14 +96,30 @@ public class ActiveTetromino
     {
         return GetCoveredSquaresFromPointAndRotation(new Point(_location.X, _location.Y - 1), _rotation);
     }
+
+    public List<Point> GetRelativeCoveredSquaresOfDifferentTetromino(Tetromino tetromino)
+    {
+        return GetCoveredSquaresFromPointRotationAndTetromino(_location, ActiveTetrominoRotation.Zero, tetromino);
+    }
+
+    public void SetNewTetromino(Tetromino tetromino)
+    {
+        Tetromino = tetromino;
+        _rotation = ActiveTetrominoRotation.Zero;
+    }
     
-    
-    private List<Point> GetCoveredSquaresFromPointAndRotation(Point postion, ActiveTetrominoRotation rotation)
+    private List<Point> GetCoveredSquaresFromPointAndRotation(Point position, ActiveTetrominoRotation rotation)
+    {
+        return GetCoveredSquaresFromPointRotationAndTetromino(position, rotation, Tetromino);
+    }
+
+    private List<Point> GetCoveredSquaresFromPointRotationAndTetromino(Point position, ActiveTetrominoRotation rotation,
+        Tetromino tetromino)
     {
         var points = new List<Point>();
-        foreach (var point in Tetromino.GetPointsFromRotation(rotation))
+        foreach (var point in tetromino.GetPointsFromRotation(rotation))
         {
-            points.Add(new Point(point.X + postion.X, postion.Y - point.Y));
+            points.Add(new Point(point.X + position.X, position.Y - point.Y));
         }
 
         return points;

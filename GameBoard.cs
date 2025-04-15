@@ -11,6 +11,8 @@ public class GameBoard
     public int BoardWidth = 10;
     public int BoardHeight = 20;
     
+    public Tetromino HeldTetromino = null;
+    
     GameBoardSquare[,] _boardSquares;
     private ActiveTetromino _activeTetromino;
     private ActiveTetrominoFactory _activeTetrominoFactory;
@@ -94,6 +96,27 @@ public class GameBoard
         {
             PlaceActiveTetromino();
             GetNewActiveTetromino();
+            CheckForAndRemoveFullRows();
+        }
+    }
+
+    public void TrySwapActiveTetromino()
+    {
+        Tetromino nextTetromino;
+        if (HeldTetromino != null)
+        {
+            nextTetromino = HeldTetromino;
+        }
+        else
+        {
+            nextTetromino = _activeTetrominoFactory.NextTetromino();
+        }
+
+        List<Point> newCoveredSpaces = _activeTetromino.GetRelativeCoveredSquaresOfDifferentTetromino(nextTetromino);
+        if (CheckAllAreEmptyValidSpaces(newCoveredSpaces))
+        {
+            HeldTetromino = _activeTetromino.Tetromino;
+            _activeTetromino.SetNewTetromino(nextTetromino);
         }
     }
 
@@ -111,7 +134,6 @@ public class GameBoard
         {
             var square = GetSquareAt(coveredPoint.X, coveredPoint.Y);
             square.SetBlock(new Block(_activeTetromino.Tetromino.GetColour()));
-            CheckForAndRemoveFullRows();
         }
     }
 

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using tetris.Tetrominos;
 
 namespace tetris;
 
@@ -19,5 +20,10 @@ public class ActiveTetrominoFactory
         var tetromino = _tetrominoQueue.Pop();
         int startingX = (_boardWidth - tetromino.GetWidthOfRotation(ActiveTetrominoRotation.Zero)) / 2;
         return new ActiveTetromino(tetromino, new Point(startingX, _boardHeight - 1));
+    }
+
+    public Tetromino NextTetromino()
+    {
+        return _tetrominoQueue.NextTetromino();
     }
 }

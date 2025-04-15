@@ -58,6 +58,14 @@ public class TetrominoQueue
         
         return nextTetromino;
     }
-    
-    
+
+    public Tetromino NextTetromino()
+    {
+        if (_list.Count == 0)
+        {
+            throw new Exception("Queue is empty");
+        }
+
+        return _list[0];
+    }
 }
