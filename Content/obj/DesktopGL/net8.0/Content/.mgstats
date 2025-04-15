@@ -1,7 +1,7 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"/home/luke/programming/projects/tetris/Content/../unmapped_images/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.065822
+"/home/luke/programming/projects/tetris/Content/../unmapped_images/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0651776
 "/home/luke/programming/projects/tetris/Content/DarkBlueBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/DarkBlueBlock.xnb","TextureProcessor","Texture2DContent",177,4181,0.0015233
-"/home/luke/programming/projects/tetris/Content/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0013912
+"/home/luke/programming/projects/tetris/Content/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0015283
 "/home/luke/programming/projects/tetris/Content/GreenBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/GreenBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0005482
 "/home/luke/programming/projects/tetris/Content/LightBlueBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/LightBlueBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0006006
 "/home/luke/programming/projects/tetris/Content/OrangeBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/OrangeBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0005602

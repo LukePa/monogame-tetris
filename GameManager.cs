@@ -11,7 +11,8 @@ public class GameManager
     public int CurrentLevel = 1;
 
     private Game _game;
-    private double _timeSinceLastDrop = 0;
+    private int _playerControlledDropSpeed = 10;
+    private double _blockDropCounter = 1;
 
     public GameManager(Game game)
     {
@@ -55,38 +56,43 @@ public class GameManager
 
     void HandleIncrementTimeSinceLastDrop(double secondsSinceLastCall)
     {
-        if (ShouldBlockBeFallingDoubleSpeed())
-        {
-            _timeSinceLastDrop += (secondsSinceLastCall * 2);
-        }
-        else
-        {
-            _timeSinceLastDrop += secondsSinceLastCall;
-        }
+        var blockDropPerSecond = GetBlockDropPerSecond();
+        _blockDropCounter -= blockDropPerSecond * secondsSinceLastCall;
     }
-
-    bool ShouldBlockBeFallingDoubleSpeed()
-    {
-        return Keyboard.GetState().IsKeyDown(Keys.S);
-    }
+    
 
     void DropBlockIfShould()
     {
-        if (_timeSinceLastDrop >= GetDropIntervalInSeconds())
+        if (_blockDropCounter <= 0)
         {
-            _gameBoard.TryMoveActiveTetrominoDown();
-            _timeSinceLastDrop = 0;
+            gameBoard.TryMoveActiveTetrominoDown();
+            _blockDropCounter = 1;
         }
     }
-    
-    double GetDropIntervalInSeconds()
+
+    float GetBlockDropPerSecond()
     {
-        return 1 / GetAmountBlockDropPerSecond();
+        var levelBasedDropsPerSecond = GetBlockDropPerSecondBasedOnLevel();
+
+
+        if (PlayerIsIncreasingDropSpeed() && levelBasedDropsPerSecond < _playerControlledDropSpeed)
+        {
+            return _playerControlledDropSpeed;
+        }
+        else
+        {
+            return levelBasedDropsPerSecond;
+        }
     }
 
-    double GetAmountBlockDropPerSecond()
+    float GetBlockDropPerSecondBasedOnLevel()
     {
-        // Use current level to calculate this
+        // Use current level to calculate this somehow
         return 1;
+    }
+
+    bool PlayerIsIncreasingDropSpeed()
+    {
+        return Keyboard.GetState().IsKeyDown(Keys.S);
     }
 }
