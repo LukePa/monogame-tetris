@@ -34,7 +34,8 @@ public class Renderer
 
         _spriteBatch.Begin();
         DrawGameboard(gameManager.gameBoard);
-        DrawHeldTetromino(gameManager.gameBoard);
+        DrawHeldTetromino(gameManager.gameBoard.HeldTetromino);
+        DrawTetrominoQueue(gameManager.gameBoard.GetNextTetrominos());
         _spriteBatch.End();
     }
 
@@ -65,16 +66,34 @@ public class Renderer
         }
     }
 
-    void DrawHeldTetromino(GameBoard board)
+    void DrawHeldTetromino(Tetromino heldTetromino)
     {
         var heldTetrominoDisplayRectangle = new Rectangle(350, 50, 80, 80);
-        var innerTetrominoRectangle = new Rectangle(360, 60, 60, 60);
-        
-        _spriteBatch.Draw(textures.EmptyBlockTexture, heldTetrominoDisplayRectangle, Color.White);
+        DrawTetrominoIconInContainingBox(heldTetromino, heldTetrominoDisplayRectangle);
+    }
 
-        if (board.HeldTetromino != null)
+    void DrawTetrominoQueue(Tetromino[] tetrominos)
+    {
+        var tetrominoQueueBoxStartPoint = new Point(350, 160);
+        var queueBoxWidth = 60;
+        var iconDimensions = 40;
+        var queueBoxHeight = (tetrominos.Length * iconDimensions) + 40;
+
+        var queueBoxRectangle = new Rectangle(
+            tetrominoQueueBoxStartPoint.X, 
+            tetrominoQueueBoxStartPoint.Y, 
+            queueBoxWidth, 
+            queueBoxHeight
+            );
+        _spriteBatch.Draw(textures.EmptyBlockTexture, queueBoxRectangle, Color.White);
+        
+        var iconsStartPoint = new Point(queueBoxRectangle.X + 10, queueBoxRectangle.Y + 20);
+        for (int i = 0; i < tetrominos.Length; i++)
         {
-            DrawTetrominoIcon(board.HeldTetromino, innerTetrominoRectangle);
+            var tetromino = tetrominos[i];
+            var yPosition = iconsStartPoint.Y + (iconDimensions * i);
+            var iconRectangle = new Rectangle(iconsStartPoint.X, yPosition, iconDimensions, iconDimensions);
+            DrawTetrominoIcon(tetromino, iconRectangle);
         }
     }
 
@@ -99,6 +118,22 @@ public class Renderer
         };
     }
 
+    void DrawTetrominoIconInContainingBox(Tetromino tetromino, Rectangle placementSquare)
+    {
+        var innerTetrominoRectangle = new Rectangle(
+            placementSquare.X + 10, 
+            placementSquare.Y + 10, 
+            placementSquare.Width - 20, 
+            placementSquare.Height - 20);
+        
+        _spriteBatch.Draw(textures.EmptyBlockTexture, placementSquare, Color.White);
+
+        if (tetromino != null)
+        {
+            DrawTetrominoIcon(tetromino, innerTetrominoRectangle);
+        }
+    }
+    
     void DrawTetrominoIcon(Tetromino tetromino, Rectangle placementSquare)
     {
         var blockWidthPixel = placementSquare.Width / 4;
