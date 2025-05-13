@@ -9,33 +9,34 @@ using tetris.Tetrominos;
 
 namespace tetris;
 
-public class Renderer
+public class PlayingGameStateRenderer
 {
     private SpriteBatch _spriteBatch;
 
-    GraphicsDevice graphicsDevice;
-    ContentManager content;
+    private GraphicsDevice _graphicsDevice;
+    private ContentManager _content;
+    private PlayingGameState _playingGameState;
+    
+    
 
-    Textures textures;
 
-
-    public Renderer(GraphicsDevice gDevice, ContentManager content)
+    public PlayingGameStateRenderer(GraphicsDevice gDevice, PlayingGameState playingGameState)
     {
-        graphicsDevice = gDevice;
-        textures = new Textures(gDevice, content);
-        _spriteBatch = new SpriteBatch(graphicsDevice);
+        _graphicsDevice = gDevice;
+        _spriteBatch = new SpriteBatch(_graphicsDevice);
+        _playingGameState = playingGameState;
     }
 
-    public void Render(GameManager gameManager)
+    public void Render(PlayingGameState state)
     {
-        graphicsDevice.Clear(Color.CornflowerBlue);
+        _graphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
 
         _spriteBatch.Begin();
-        DrawGameboard(gameManager.gameBoard);
-        DrawHeldTetromino(gameManager.gameBoard.HeldTetromino);
-        DrawTetrominoQueue(gameManager.gameBoard.GetNextTetrominos());
+        DrawGameboard(state.GameBoard);
+        DrawHeldTetromino(state.GameBoard.HeldTetromino);
+        DrawTetrominoQueue(state.GameBoard.GetNextTetrominos());
         _spriteBatch.End();
     }
 
@@ -85,7 +86,7 @@ public class Renderer
             queueBoxWidth, 
             queueBoxHeight
             );
-        _spriteBatch.Draw(textures.EmptyBlockTexture, queueBoxRectangle, Color.White);
+        _spriteBatch.Draw(Textures.EmptyBlockTexture, queueBoxRectangle, Color.White);
         
         var iconsStartPoint = new Point(queueBoxRectangle.X + 10, queueBoxRectangle.Y + 20);
         for (int i = 0; i < tetrominos.Length; i++)
@@ -107,14 +108,14 @@ public class Renderer
     {
         return blockColour switch
         {
-            BlockColour.DarkBlue => textures.DarkBlueBlockTexture,
-            BlockColour.Green => textures.GreenBlockTexture,
-            BlockColour.LightBlue => textures.LightBlueBlockTexture,
-            BlockColour.Orange => textures.OrangeBlockTexture,
-            BlockColour.Purple => textures.PurpleBlockTexture,
-            BlockColour.Red => textures.RedBlockTexture,
-            BlockColour.Yellow => textures.YellowBlockTexture,
-            _ => textures.EmptyBlockTexture
+            BlockColour.DarkBlue => Textures.DarkBlueBlockTexture,
+            BlockColour.Green => Textures.GreenBlockTexture,
+            BlockColour.LightBlue => Textures.LightBlueBlockTexture,
+            BlockColour.Orange => Textures.OrangeBlockTexture,
+            BlockColour.Purple => Textures.PurpleBlockTexture,
+            BlockColour.Red => Textures.RedBlockTexture,
+            BlockColour.Yellow => Textures.YellowBlockTexture,
+            _ => Textures.EmptyBlockTexture
         };
     }
 
@@ -126,7 +127,7 @@ public class Renderer
             placementSquare.Width - 20, 
             placementSquare.Height - 20);
         
-        _spriteBatch.Draw(textures.EmptyBlockTexture, placementSquare, Color.White);
+        _spriteBatch.Draw(Textures.EmptyBlockTexture, placementSquare, Color.White);
 
         if (tetromino != null)
         {

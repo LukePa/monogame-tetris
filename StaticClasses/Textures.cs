@@ -5,18 +5,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace tetris;
 
-public class Textures
+public static class Textures
 {
-    public Texture2D EmptyBlockTexture;
-    public Texture2D DarkBlueBlockTexture;
-    public Texture2D GreenBlockTexture;
-    public Texture2D LightBlueBlockTexture;
-    public Texture2D OrangeBlockTexture;
-    public Texture2D PurpleBlockTexture;
-    public Texture2D RedBlockTexture;
-    public Texture2D YellowBlockTexture;
+    public static Texture2D EmptyBlockTexture;
+    public static Texture2D DarkBlueBlockTexture;
+    public static Texture2D GreenBlockTexture;
+    public static Texture2D LightBlueBlockTexture;
+    public static Texture2D OrangeBlockTexture;
+    public static Texture2D PurpleBlockTexture;
+    public static Texture2D RedBlockTexture;
+    public static Texture2D YellowBlockTexture;
 
-    public Textures(GraphicsDevice gDevice, ContentManager content)
+    public static void LoadTextures(ContentManager content)
     {
         EmptyBlockTexture = content.Load<Texture2D>("EmptyBlock");
         DarkBlueBlockTexture = content.Load<Texture2D>("DarkBlueBlock");
@@ -27,4 +27,6 @@ public class Textures
         RedBlockTexture = content.Load<Texture2D>("RedBlock");
         YellowBlockTexture = content.Load<Texture2D>("YellowBlock");
     }
+    
+    
 }

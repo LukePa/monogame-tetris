@@ -7,45 +7,38 @@ namespace tetris;
 
 public class Game1 : Game
 {
-    private GraphicsDeviceManager _graphics;
-    private Renderer renderer;
-
-
-    private GameManager gameManager;
-
     
-
     public Game1()
     {
-        _graphics = new GraphicsDeviceManager(this);
-        _graphics.PreferredBackBufferWidth = 1600;
-        _graphics.PreferredBackBufferHeight = 900;
-        _graphics.IsFullScreen = false;
+        var graphicsDeviceManager = new GraphicsDeviceManager(this);
+        graphicsDeviceManager.PreferredBackBufferWidth = 1600;
+        graphicsDeviceManager.PreferredBackBufferHeight = 900;
+        graphicsDeviceManager.IsFullScreen = false;
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+        GlobalGameStateController.SetGame(this);
     }
 
     protected override void Initialize()
     {
-        gameManager = new GameManager(this);
+        GlobalGameStateController.SetStartingGameState();
         base.Initialize();
     }
 
     protected override void LoadContent()
     {
-        renderer = new Renderer(GraphicsDevice, Content);
+        Textures.LoadTextures(Content);
     }
 
     protected override void Update(GameTime gameTime)
     {
-        gameManager.Update(gameTime);
-
+        GlobalGameStateController.GetCurrentGameState().Update(gameTime);
         base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        renderer.Render(gameManager);
+        GlobalGameStateController.GetCurrentGameState().Render();
         base.Draw(gameTime);
     }
 }

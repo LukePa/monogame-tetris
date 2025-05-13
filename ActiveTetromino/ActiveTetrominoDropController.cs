@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace tetris;
 
-public class BlockDropController
+public class ActiveTetrominoDropController
 {
     private GameBoard _gameBoard;
     
@@ -11,7 +11,7 @@ public class BlockDropController
     private double _blockDropCounter = 1;
     private Keys _increaseDropSpeedKey = Keys.Down;
 
-    public BlockDropController(GameBoard gameBoard)
+    public ActiveTetrominoDropController(GameBoard gameBoard)
     {
         _gameBoard = gameBoard;
     }

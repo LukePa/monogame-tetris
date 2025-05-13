@@ -1,26 +1,25 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using tetris.GameStates;
 
 namespace tetris;
 
-public class GameManager
+public class PlayingGameState: IGameState
 {
     GameBoard _gameBoard = new GameBoard();
-    public GameBoard gameBoard => _gameBoard;
-    public int CurrentLevel = 1;
+    public GameBoard GameBoard => _gameBoard;
     
-    private Game _game;
     private BlockMovementController _movementController;
-    private BlockDropController _blockDropController;
-    private int _playerControlledDropSpeed = 10;
-    private double _blockDropCounter = 1;
+    private ActiveTetrominoDropController _activeTetrominoDropController;
+    private PlayingGameStateRenderer _renderer;
 
-    public GameManager(Game game)
+    public PlayingGameState(GraphicsDevice graphicsDevice)
     {
-        _game = game;
         _movementController = new BlockMovementController(_gameBoard);
-        _blockDropController = new BlockDropController(_gameBoard);
+        _activeTetrominoDropController = new ActiveTetrominoDropController(_gameBoard);
+        _renderer = new PlayingGameStateRenderer(graphicsDevice, this);
     }
 
     public void Update(GameTime gameTime)
@@ -28,14 +27,19 @@ public class GameManager
         HandleExit();
         HandleHeldTetrominoInput();
         _movementController.Update(gameTime);
-        _blockDropController.Update(gameTime);
+        _activeTetrominoDropController.Update(gameTime);
+    }
+    
+    public void Render()
+    {
+        _renderer.Render(this);
     }
 
     void HandleExit()
     {
         if (Keyboard.GetState().IsKeyDown(Keys.Escape))
         {
-            _game.Exit();
+            GlobalGameStateController.CloseGame();
         }
     }
 

@@ -133,7 +133,7 @@ public class GameBoard
         if (!CheckAllAreEmptyValidSpaces(coveredPoints))
         {
 
-            throw new Exception("Should end the game here");
+            GlobalGameStateController.SetEndingGameState();
         }
         
         foreach (var coveredPoint in coveredPoints)
