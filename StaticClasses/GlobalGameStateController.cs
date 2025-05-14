@@ -27,12 +27,12 @@ public static class GlobalGameStateController
 
     public static void SetStartingGameState()
     {
-        SetPlayingGameState();
+        SetMainMenuGameState();
     }
 
     public static void SetMainMenuGameState()
     {
-        
+        _currentGameState = new MainMenuGameState(_game.GraphicsDevice);
     }
 
     public static void SetPlayingGameState()

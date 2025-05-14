@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace tetris;
 
-public static class Textures
+public static class Assets
 {
     public static Texture2D EmptyBlockTexture;
     public static Texture2D DarkBlueBlockTexture;
@@ -16,7 +16,9 @@ public static class Textures
     public static Texture2D RedBlockTexture;
     public static Texture2D YellowBlockTexture;
 
-    public static void LoadTextures(ContentManager content)
+    public static SpriteFont GameFont;
+
+    public static void LoadAssets(ContentManager content)
     {
         EmptyBlockTexture = content.Load<Texture2D>("EmptyBlock");
         DarkBlueBlockTexture = content.Load<Texture2D>("DarkBlueBlock");
@@ -26,6 +28,8 @@ public static class Textures
         PurpleBlockTexture = content.Load<Texture2D>("PurpleBlock");
         RedBlockTexture = content.Load<Texture2D>("RedBlock");
         YellowBlockTexture = content.Load<Texture2D>("YellowBlock");
+        
+        GameFont = content.Load<SpriteFont>("GameFont");
     }
     
     

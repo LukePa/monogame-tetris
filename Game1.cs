@@ -27,7 +27,7 @@ public class Game1 : Game
 
     protected override void LoadContent()
     {
-        Textures.LoadTextures(Content);
+        Assets.LoadAssets(Content);
     }
 
     protected override void Update(GameTime gameTime)

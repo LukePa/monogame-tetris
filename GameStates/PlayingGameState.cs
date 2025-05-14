@@ -19,7 +19,7 @@ public class PlayingGameState: IGameState
     {
         _movementController = new BlockMovementController(_gameBoard);
         _activeTetrominoDropController = new ActiveTetrominoDropController(_gameBoard);
-        _renderer = new PlayingGameStateRenderer(graphicsDevice, this);
+        _renderer = new PlayingGameStateRenderer(graphicsDevice);
     }
 
     public void Update(GameTime gameTime)

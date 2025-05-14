@@ -32,3 +32,4 @@
 /home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/PurpleBlock.xnb
 /home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/RedBlock.xnb
 /home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/YellowBlock.xnb
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/GameFont.xnb

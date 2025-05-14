@@ -7,6 +7,7 @@
     <File>/home/luke/programming/projects/tetris/Content/../unmapped_images/EmptyBlock.png</File>
     <File>/home/luke/programming/projects/tetris/Content/DarkBlueBlock.png</File>
     <File>/home/luke/programming/projects/tetris/Content/EmptyBlock.png</File>
+    <File>/home/luke/programming/projects/tetris/Content/GameFont.spritefont</File>
     <File>/home/luke/programming/projects/tetris/Content/GreenBlock.png</File>
     <File>/home/luke/programming/projects/tetris/Content/LightBlueBlock.png</File>
     <File>/home/luke/programming/projects/tetris/Content/OrangeBlock.png</File>
@@ -16,6 +17,7 @@
   </SourceFiles>
   <DestFiles>
     <File>EmptyBlock.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

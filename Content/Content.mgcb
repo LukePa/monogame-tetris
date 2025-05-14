@@ -49,6 +49,13 @@
 /processorParam:TextureFormat=Color
 /build:EmptyBlock.png
 
+#begin GameFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:GameFont.spritefont
+
 #begin GreenBlock.png
 /importer:TextureImporter
 /processor:TextureProcessor

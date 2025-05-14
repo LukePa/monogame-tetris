@@ -15,16 +15,14 @@ public class PlayingGameStateRenderer
 
     private GraphicsDevice _graphicsDevice;
     private ContentManager _content;
-    private PlayingGameState _playingGameState;
     
     
 
 
-    public PlayingGameStateRenderer(GraphicsDevice gDevice, PlayingGameState playingGameState)
+    public PlayingGameStateRenderer(GraphicsDevice gDevice)
     {
         _graphicsDevice = gDevice;
         _spriteBatch = new SpriteBatch(_graphicsDevice);
-        _playingGameState = playingGameState;
     }
 
     public void Render(PlayingGameState state)
@@ -86,7 +84,7 @@ public class PlayingGameStateRenderer
             queueBoxWidth, 
             queueBoxHeight
             );
-        _spriteBatch.Draw(Textures.EmptyBlockTexture, queueBoxRectangle, Color.White);
+        _spriteBatch.Draw(Assets.EmptyBlockTexture, queueBoxRectangle, Color.White);
         
         var iconsStartPoint = new Point(queueBoxRectangle.X + 10, queueBoxRectangle.Y + 20);
         for (int i = 0; i < tetrominos.Length; i++)
@@ -108,14 +106,14 @@ public class PlayingGameStateRenderer
     {
         return blockColour switch
         {
-            BlockColour.DarkBlue => Textures.DarkBlueBlockTexture,
-            BlockColour.Green => Textures.GreenBlockTexture,
-            BlockColour.LightBlue => Textures.LightBlueBlockTexture,
-            BlockColour.Orange => Textures.OrangeBlockTexture,
-            BlockColour.Purple => Textures.PurpleBlockTexture,
-            BlockColour.Red => Textures.RedBlockTexture,
-            BlockColour.Yellow => Textures.YellowBlockTexture,
-            _ => Textures.EmptyBlockTexture
+            BlockColour.DarkBlue => Assets.DarkBlueBlockTexture,
+            BlockColour.Green => Assets.GreenBlockTexture,
+            BlockColour.LightBlue => Assets.LightBlueBlockTexture,
+            BlockColour.Orange => Assets.OrangeBlockTexture,
+            BlockColour.Purple => Assets.PurpleBlockTexture,
+            BlockColour.Red => Assets.RedBlockTexture,
+            BlockColour.Yellow => Assets.YellowBlockTexture,
+            _ => Assets.EmptyBlockTexture
         };
     }
 
@@ -127,7 +125,7 @@ public class PlayingGameStateRenderer
             placementSquare.Width - 20, 
             placementSquare.Height - 20);
         
-        _spriteBatch.Draw(Textures.EmptyBlockTexture, placementSquare, Color.White);
+        _spriteBatch.Draw(Assets.EmptyBlockTexture, placementSquare, Color.White);
 
         if (tetromino != null)
         {
