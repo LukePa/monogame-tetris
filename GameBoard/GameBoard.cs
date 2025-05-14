@@ -141,6 +141,8 @@ public class GameBoard
             var square = GetSquareAt(coveredPoint.X, coveredPoint.Y);
             square.SetBlock(new Block(_activeTetromino.Tetromino.GetColour()));
         }
+        
+        Sound.PlayPlaceSoundEffect();
     }
 
     private void GetNewActiveTetromino()
@@ -196,6 +198,7 @@ public class GameBoard
     {
         if (rowIndexes == null || rowIndexes.Count == 0) return;
 
+        Sound.PlayClearSoundEffect();
         var newBoardSquares = new GameBoardSquare[BoardWidth, BoardHeight];
         for (int y = 0; y < BoardHeight; y++)
         {

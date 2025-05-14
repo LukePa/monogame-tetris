@@ -33,3 +33,8 @@
 /home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/RedBlock.xnb
 /home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/YellowBlock.xnb
 /home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/GameFont.xnb
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/DroppingBlocks.ogg
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/DroppingBlocks.xnb
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/clear.xnb
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/place.xnb
+/home/luke/programming/projects/tetris/bin/Debug/net8.0/Content/swap.xnb

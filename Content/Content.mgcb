@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:../unmapped_images/EmptyBlock.png;EmptyBlock.png
 
+#begin clear.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:clear.wav
+
 #begin DarkBlueBlock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -36,6 +42,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:DarkBlueBlock.png
+
+#begin DroppingBlocks.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:DroppingBlocks.mp3
 
 #begin EmptyBlock.png
 /importer:TextureImporter
@@ -92,6 +104,12 @@
 /processorParam:TextureFormat=Color
 /build:OrangeBlock.png
 
+#begin place.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:place.wav
+
 #begin PurpleBlock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -115,6 +133,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:RedBlock.png
+
+#begin swap.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:swap.wav
 
 #begin YellowBlock.png
 /importer:TextureImporter

@@ -1,11 +1,15 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"/home/luke/programming/projects/tetris/Content/../unmapped_images/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0658258
+"/home/luke/programming/projects/tetris/Content/../unmapped_images/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0666526
+"/home/luke/programming/projects/tetris/Content/clear.wav","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/clear.xnb","SoundEffectProcessor","SoundEffectContent",552340,552317,0.0266192
 "/home/luke/programming/projects/tetris/Content/DarkBlueBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/DarkBlueBlock.xnb","TextureProcessor","Texture2DContent",177,4181,0.0015233
-"/home/luke/programming/projects/tetris/Content/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0014269
+"/home/luke/programming/projects/tetris/Content/DroppingBlocks.mp3","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/DroppingBlocks.xnb","SongProcessor","SongContent",1642313,132,0.925519
+"/home/luke/programming/projects/tetris/Content/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0015639
 "/home/luke/programming/projects/tetris/Content/GameFont.spritefont","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/GameFont.xnb","FontDescriptionProcessor","SpriteFontContent",2029,37922,0.0566496
 "/home/luke/programming/projects/tetris/Content/GreenBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/GreenBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0005482
 "/home/luke/programming/projects/tetris/Content/LightBlueBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/LightBlueBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0006006
 "/home/luke/programming/projects/tetris/Content/OrangeBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/OrangeBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0005602
+"/home/luke/programming/projects/tetris/Content/place.wav","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/place.xnb","SoundEffectProcessor","SoundEffectContent",189006,189033,0.0207969
 "/home/luke/programming/projects/tetris/Content/PurpleBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/PurpleBlock.xnb","TextureProcessor","Texture2DContent",177,4181,0.0006107
 "/home/luke/programming/projects/tetris/Content/RedBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/RedBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0006577
+"/home/luke/programming/projects/tetris/Content/swap.wav","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/swap.xnb","SoundEffectProcessor","SoundEffectContent",24360,24333,0.0329247
 "/home/luke/programming/projects/tetris/Content/YellowBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/YellowBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0004241

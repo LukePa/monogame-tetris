@@ -1,7 +1,9 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace tetris;
 
@@ -18,6 +20,11 @@ public static class Assets
 
     public static SpriteFont GameFont;
 
+    public static Song ThemeSong;
+    public static SoundEffect PlaceSoundEffect;
+    public static SoundEffect ClearSoundEffect;
+    public static SoundEffect SwapSoundEffect;
+
     public static void LoadAssets(ContentManager content)
     {
         EmptyBlockTexture = content.Load<Texture2D>("EmptyBlock");
@@ -30,6 +37,11 @@ public static class Assets
         YellowBlockTexture = content.Load<Texture2D>("YellowBlock");
         
         GameFont = content.Load<SpriteFont>("GameFont");
+        
+        ThemeSong = content.Load<Song>("DroppingBlocks");
+        PlaceSoundEffect = content.Load<SoundEffect>("place");
+        ClearSoundEffect = content.Load<SoundEffect>("clear");
+        SwapSoundEffect = content.Load<SoundEffect>("swap");
     }
     
     
