@@ -39,13 +39,14 @@ public static class GlobalGameStateController
 
     public static void SetPlayingGameState()
     {
+        GlobalDataController.Reset();
         _currentGameState = new PlayingGameState(_game.GraphicsDevice);
         Sound.PlayGameMusic();
     }
 
     public static void SetEndingGameState()
     {
-        CloseGame();
+        _currentGameState = new EndingGameState(_game.GraphicsDevice);
         Sound.StopMusic();
     }
 

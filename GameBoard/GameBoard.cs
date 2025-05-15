@@ -165,7 +165,10 @@ public class GameBoard
     private void CheckForAndRemoveFullRows()
     {
         var fullRows = GetIndexesOfFullRows();
-        RemoveRowsFromBoard(fullRows);
+        if (fullRows != null && fullRows.Count > 0)
+        {
+            ClearLines(fullRows);
+        }
     }
 
     private List<int> GetIndexesOfFullRows()
@@ -194,11 +197,16 @@ public class GameBoard
         return rows;
     }
 
+    private void ClearLines(List<int> rowIndexes)
+    {
+        RemoveRowsFromBoard(rowIndexes);
+        GlobalDataController.NotifyLinesCleared(rowIndexes.Count);
+    }
+
     private void RemoveRowsFromBoard(List<int> rowIndexes)
     {
         if (rowIndexes == null || rowIndexes.Count == 0) return;
 
-        Sound.PlayClearSoundEffect();
         var newBoardSquares = new GameBoardSquare[BoardWidth, BoardHeight];
         for (int y = 0; y < BoardHeight; y++)
         {

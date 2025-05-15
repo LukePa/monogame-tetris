@@ -55,8 +55,7 @@ public class ActiveTetrominoDropController
 
     float GetBlockDropPerSecondBasedOnLevel()
     {
-        // Use current level to calculate this somehow
-        return 1;
+        return  0.5f + (GlobalDataController.GetLevel() / 2f);
     }
 
     bool PlayerIsIncreasingDropSpeed()

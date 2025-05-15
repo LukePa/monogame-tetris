@@ -1,9 +1,9 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"/home/luke/programming/projects/tetris/Content/../unmapped_images/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0666526
+"/home/luke/programming/projects/tetris/Content/../unmapped_images/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0660461
 "/home/luke/programming/projects/tetris/Content/clear.wav","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/clear.xnb","SoundEffectProcessor","SoundEffectContent",552340,552317,0.0266192
 "/home/luke/programming/projects/tetris/Content/DarkBlueBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/DarkBlueBlock.xnb","TextureProcessor","Texture2DContent",177,4181,0.0015233
 "/home/luke/programming/projects/tetris/Content/DroppingBlocks.mp3","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/DroppingBlocks.xnb","SongProcessor","SongContent",1642313,132,0.925519
-"/home/luke/programming/projects/tetris/Content/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0015639
+"/home/luke/programming/projects/tetris/Content/EmptyBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/EmptyBlock.xnb","TextureProcessor","Texture2DContent",138,4181,0.0015133
 "/home/luke/programming/projects/tetris/Content/GameFont.spritefont","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/GameFont.xnb","FontDescriptionProcessor","SpriteFontContent",2029,37922,0.0566496
 "/home/luke/programming/projects/tetris/Content/GreenBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/GreenBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0005482
 "/home/luke/programming/projects/tetris/Content/LightBlueBlock.png","/home/luke/programming/projects/tetris/Content/bin/DesktopGL/Content/LightBlueBlock.xnb","TextureProcessor","Texture2DContent",174,4181,0.0006006

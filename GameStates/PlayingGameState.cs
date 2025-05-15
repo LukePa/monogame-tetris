@@ -24,8 +24,7 @@ public class PlayingGameState: IGameState
     public void Update(GameTime gameTime)
     {
         HandleExit();
-        HandleHeldTetrominoInput();
-        _movementController.Update(gameTime);
+        HandleHeldTetrominoInput(gameTime);
         _activeTetrominoDropController.Update(gameTime);
     }
     
@@ -36,19 +35,21 @@ public class PlayingGameState: IGameState
 
     void HandleExit()
     {
-        if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+        if (KeyUpController.HasKeyReleased(Keys.Escape))
         {
-            GlobalGameStateController.CloseGame();
+            GlobalGameStateController.SetEndingGameState();
         }
     }
 
-    void HandleHeldTetrominoInput()
+    void HandleHeldTetrominoInput(GameTime gameTime)
     {
-        if (KeyUpController.HasKeyReleased(Keys.C))
+        if (KeyUpController.HasKeyReleased(Keys.Space))
         {
             _gameBoard.TrySwapActiveTetromino();
             Sound.PlaySwapSoundEffect();
         }
+        
+        _movementController.Update(gameTime);
     }
     
 }

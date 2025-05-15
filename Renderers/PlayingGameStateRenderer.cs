@@ -35,6 +35,7 @@ public class PlayingGameStateRenderer
         DrawGameboard(state.GameBoard);
         DrawHeldTetromino(state.GameBoard.HeldTetromino);
         DrawTetrominoQueue(state.GameBoard.GetNextTetrominos());
+        DrawStats();
         _spriteBatch.End();
     }
 
@@ -69,6 +70,10 @@ public class PlayingGameStateRenderer
     {
         var heldTetrominoDisplayRectangle = new Rectangle(350, 50, 80, 80);
         DrawTetrominoIconInContainingBox(heldTetromino, heldTetrominoDisplayRectangle);
+        var textPosition = new Vector2(350, 90);
+        var text = "Held:";
+        var textOrigin = new Vector2(Assets.GameFont.MeasureString(text).X, Assets.GameFont.MeasureString(text).Y / 2);
+        _spriteBatch.DrawString(Assets.GameFont, text, textPosition, Color.White, 0f, textOrigin, 0.8f, SpriteEffects.None, 0f);
     }
 
     void DrawTetrominoQueue(Tetromino[] tetrominos)
@@ -94,6 +99,19 @@ public class PlayingGameStateRenderer
             var iconRectangle = new Rectangle(iconsStartPoint.X, yPosition, iconDimensions, iconDimensions);
             DrawTetrominoIcon(tetromino, iconRectangle);
         }
+    }
+
+    void DrawStats()
+    {
+        var levelTextPosition = new Vector2(1100, 200);
+        var levelText = "Level: " + GlobalDataController.GetLevel();
+        var levelTextOrigin = new Vector2(0, 0);
+        _spriteBatch.DrawString(Assets.GameFont, levelText, levelTextPosition, Color.White, 0f, levelTextOrigin, 1f, SpriteEffects.None, 0f);
+        
+       var scoreTextPosition = new Vector2(1100, 220);
+       var scoreText = "Score: " + GlobalDataController.Score;
+       var scoreTextOrigin = new Vector2(0, 0);
+       _spriteBatch.DrawString(Assets.GameFont, scoreText, scoreTextPosition, Color.Gray, 0f, scoreTextOrigin, 0.8f, SpriteEffects.None, 0f);
     }
 
     void DrawGameboardSquare(int x, int y, int dimensions, Texture2D texture)
